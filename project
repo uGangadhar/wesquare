@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body{
+            width:100%;
+            color: rgb(0, 0, 0);
+            font-family: Arial, Helvetica, sans-serif;
+            background-origin: inherit;
+        }
+        
+        .divblock
+        {
+            border: solid 1px black;
+            display: block;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .pdivblock
+        {
+            border: solid 1px black;
+            display: block;
+            position: relative;
+            padding:10px;
+            margin-bottom: 10px;
+
+        }
+        .performanceAnalysis
+        {
+            border: solid 1px;         
+            padding: 10px;
+        }
+        .learning{
+            display: block;
+            margin-left: 20px;
+            padding-bottom: 10px;
+        }
+        .learning textarea
+        {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        
+        .deletechallange 
+        {
+            border: solid 1px;
+            cursor: pointer;
+            background-color:white;
+            color: gray;
+            width: auto;
+            height: auto;
+            padding: 6px;
+            display: block;
+            margin-top: 4px;
+            display: inline-block;
+        }
+        .deletelearning
+        {
+            border: solid 1px;
+            cursor: pointer;
+            background-color:white;
+            color: gray;
+            width: auto;
+            height: auto;
+            padding: 6px;
+            display: inline-block;
+            margin-top: 4px;
+            display: inline-block;
+        }
+        /* .deletechallange span{
+            display: inline-block;
+            padding-bottom: 10px;
+        } */
+        
+        /* .projects i
+        {
+            background: rgb(0, 0, 0);
+            color: azure;
+        } */
+        .delete i{
+            margin-right: 10px;
+        }
+        .delete:hover
+        {
+            background-color: #3336d6
+        }
+        .relete:hover
+        {
+            background-color: #3336d6
+        }
+        .delete :checked
+        {
+            background-color: rgb(255, 255, 255);
+        }
+        .delete
+        {
+            background-color: #82a5f0;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            align-items: center;
+            display: flex;
+            font-size: 1.Serm;
+            padding: 10px;
+            margin-top: 10px;
+            width:150px;
+            height: auto;
+            display: inline-block;
+            box-shadow: none;
+            align-items: center;
+            font-weight: bold;
+            border: solid 1px;
+            /* padding-bottom: 10px; */
+            position: absolute;
+            right: 35.9px;
+            bottom: 10px;
+            /* border-radius: 10%; */
+
+        }
+        .rdelete
+        {
+            background-color: #82a5f0;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            align-items: center;
+            display: flex;
+            font-size: 1.Serm;
+            margin-top: 10px;
+            width:160px;
+            height: auto;
+            padding-left: 0;
+            display: inline-block;
+            box-shadow: none;
+            align-items: center;
+            font-weight: bold;
+            border: solid 1px;
+            position: absolute;
+            right: 35.9px;
+            bottom: 10px;
+        }
+        input
+        {
+            border: none;
+            background-color: none;
+            border-bottom: solid 1px rgb(0, 0, 0);
+            padding: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        textarea
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            background-color: none;
+            border-bottom: solid 1px black;
+            padding: 3px;
+            font-size: 20px;
+        }
+        #ecs{
+            width: 40%;
+        }
+        #empname
+        {
+            display: inline-block;
+            margin: 10px;
+            height: 30px;
+            width: 47%;
+        }
+        #ratedby
+        {
+            display: inline-block;
+            margin: 10px 0 30px 0;
+            height: 30px;
+            width: 50%;
+        }
+        #commentby
+        {
+            height: 70px;
+            width: 98%;
+            margin-bottom: 5%;
+        }
+        #emprole
+        {
+            display: inline-block;
+                 
+            margin: 10px;
+            width: 47%;
+        }
+        #emptest
+        {
+            display: block;           
+            margin: 10px;
+
+        }
+        #emptool
+        {
+            display: block;           
+            margin: 10px;
+
+        }
+        #empAoI 
+        {
+            display: block;         
+            margin: 30px 10px 10px 10px;
+            height: 70px;
+            width: calc(100% - 40px);
+        }
+        .challange textarea
+        {
+            width: 47.3%;
+            margin-right: 20px;
+        }
+        #emprewards
+        {
+            display: block;           
+            margin: 30px 10px 10px 10px;
+            height: 70px;
+            width: calc(100% - 40px);
+            margin-bottom: 6%;
+        }
+        .panel
+        {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        }
+        .projects a{
+            width: auto;
+        }
+        .learnings
+        {
+            font-size: 20px;
+            font-weight: normal;
+            display: block;
+            margin: 30px 20px 30px 7px;
+        }
+        .learnings .learningbutton{
+            border: none;
+            position: absolute;
+            right: 37.9px;
+            background-color: #82a5f0;
+            color: white;
+            padding: 6px;
+        }
+        .learning textarea
+        {
+            width: 95.9%;
+        }
+        .challange
+        {
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-bottom: 3px;
+        }
+        .challanges
+        {
+            font-size: 20px;
+            font-weight: normal;
+            display: block;
+            margin: 30px 20px 25px 14px;
+        }
+        .challanges a
+        {
+            border: none;
+            position: absolute;
+            right: 38px;
+            background-color:#82a5f0;
+            color: white;
+            padding: 6px;
+            /* border-radius: 30%; */
+        }
+        .form_element{
+            margin: auto;
+            /* border-radius: 4%; */
+            width: 70%;
+            height: 70%;
+            padding: 20px;
+            position: relative;
+        }
+        .pheading
+        {
+            background-color: rgb(35, 187, 238);
+            padding: 10px;
+        }
+        #addp
+        {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            margin-right: 4%;
+        }
+        
+        #addr
+        {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            margin-right: 4%;
+        }
+        /* .addprojects{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: solid 2px;
+            padding: 5px;
+            margin-left: 650px;
+            background-color: rgb(255, 255, 255);
+            color: rgba(83, 82, 82, 0.788) ;
+            text-decoration: none;
+            /* border-radius: 20%; }*/
+        /* .performanceAnalysis .Teamworkstar
+        {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .performanceAnalysis .PrblmSolvingstar
+        {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .performanceAnalysis .techstar
+        {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .performanceAnalysis .Initiativestar
+        {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        } */
+        .Initiativestar
+        {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .techstar
+        {
+            font-size: 20px;
+        }
+        .Teamworkstar
+        {
+            font-size: 20px;
+
+        }
+        .Initiativestar
+        {
+            font-size: 20px;
+        }
+        .PrblmSolvingstar 
+        {
+            font-size: 20px;
+        }
+        .techstar
+        {
+            font-size: 20px;
+        }
+        .tdiv,.tediv,.pdiv,.idiv
+        {
+            width: 15%;
+            display: inline-block;
+        }
+        .Teamworkstar
+        {
+            font-size: 20px;
+
+        }
+        .Initiativestar
+        {
+            font-size: 20px;
+        }
+        .Initiativestar i
+        {
+            font-size: 30px;
+            color: rgb(177, 177, 177);
+            cursor: pointer;
+            transition: color 0.3 ease;
+        }
+        .PrblmSolvingstar i
+        {
+            font-size: 30px;
+            color: rgb(177, 177, 177);
+            cursor: pointer;
+            transition: color 0.3 ease;
+        }
+        .Teamworkstar i
+        {
+            font-size: 30px;
+            color: rgb(177, 177, 177);
+            cursor: pointer;
+            transition: color 0.3 ease;
+        }
+        .pdivblock .textcontent
+        {
+            width: 25%;
+        }
+        .techstar i
+        {
+            font-size: 30px;
+            color: rgb(177, 177, 177);
+            cursor: pointer;
+            transition: color 0.3 ease;
+        }
+        .Initiativestar i.active
+        {
+            color:rgb(10, 146, 78);
+        }
+        .Teamworkstar i.active
+        {
+            color:rgb(10, 146, 78);
+        }
+        .PrblmSolvingstar i.active
+        {
+            color:rgb(10, 146, 78);
+        }
+        .techstar i.active
+        {
+            color:rgb(10, 146, 78);
+        }
+        .learn{
+            border: dotted 1px;
+        }
+        #submit :hover
+        {
+            background-color: rgb(43, 48, 36);
+        }
+        /* #techf
+        {
+            margin-left:7%;
+        }
+        #if
+        {
+            margin-left:8.9%;
+
+        }
+        #tef
+        {
+            margin-left:2.6%;
+
+        } */
+        #submit
+        {
+            cursor: pointer;
+            display: block;
+            border: none;
+            position: absolute;
+            background-color: rgb(139, 161, 235);
+            color: rgb(255, 255, 255);
+            width: 100px;
+            height: 40px;
+            right: 1.3%;
+            bottom: 2%;
+            margin-top: 10%;
+            /* border-radius: 40%; */
+        }
+        .performanceAnalysis h3{
+            padding: 10px;
+        }
+        .performanceAnalysis i
+        {
+            padding: 15px;
+        }
+        .performanceAnalysis p
+        {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .period{
+            display: flex;
+            justify-content: space-between;
+        }
+        .submitt
+        {
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;width: 100%; background-color: #6b6b6b;color: white; padding-top: 30px;height: 70px; border-bottom: white;">Details Form</h1><br><br>
+    <form class ="form_element">
+        <h2 style="display: inline-block;">Name: </h2>
+            <input required type="text" id="fname" value="Sujit" name="fname" style="border: solid white; display: inline-block;"><br><br></h2>
+        <div class="period">
+            <div><label for="estartdate">
+                    <h2 style="display: inline-block;">START : </h2>
+                </label>
+                <input required type="date" id="estartdate" value="" style="display: inline-block; border-bottom: back">
+            </div>
+            <div><label for="eenddate">
+                    <h2 style="display: inline-block;">END: </h2>
+                </label>
+                <input required type="date" id="eenddate" value="" style="display: inline-block;">
+            </div>
+        </div>
+        <br><br>
+        <h2 style="display: inline-block;">PROJECTS</h2>
+        <a href="#"  class="addprojects"style="font-size:40px;"></i><i class="fa-solid fa-folder-plus" id="addp"></i></a>
+
+        <div class="pcontainer" style="border: solid 1px; padding: 10px;">
+            <div class="pheading">
+                <h2 style="display: inline-block;margin-right: 80%;font-weight: normal;font-size: 23; font-weight: 400;">Project details</h2>
+            </div>
+            <div class="projects"></div>
+        </div><br>
+
+        <h2 style="display: inline-block;">PERFORMANCE ANALSIS</h2>
+        <a href="#"  class="addrating"style="font-size:40px;"></i><i class="fa-solid fa-folder-plus" id="addr"></i></a>
+
+        <div class="performanceAnalysis">
+            <div class="rating">
+            
+           </div>
+        </div>
+        <div class="submitt" style="padding: 3%;"><label for="submit"></label>
+            <input type="submit" id="submit" value="Submit"></div>
+        
+        <script>
+            window.onload=function()
+            {
+                document.getElementById('addproject').click();
+                document.getElementById('addrating').click();
+            }
+            const paddbtn=document.querySelector(".addprojects");
+            paddbtn.id="addproject";
+            const pinput=document.querySelector(".projects");
+        
+            function removeInput()
+            {
+                event.preventDefault()
+                this.parentElement.remove();
+            }
+            function addInput()
+            {
+                event.preventDefault();
+                const name=document.createElement("input");
+                name.type="text";
+                name.id="empname";
+                name.setAttribute('required','');
+                name.placeholder="Project name";
+
+                const role= document.createElement("input");
+                role.type="text";
+                role.id="emprole";
+                role.setAttribute('required','');
+                role.placeholder="Role in the project";
+                
+                const AoI=document.createElement("textarea");
+                AoI.type="text";
+                AoI.id="empAoI";
+                AoI.setAttribute('required','');
+                AoI.placeholder="Areas of Improvement";
+
+                const rewards=document.createElement("textarea");
+                rewards.type="text";
+                rewards.setAttribute('required','');
+                rewards.id="emprewards";
+                rewards.placeholder="Rewards during project";
+
+                const a=document.createElement("div");
+                a.className="pdeletediv";
+                const btn=document.createElement("button");
+                btn.className="delete";
+                btn.innerHTML="<i class='fa-solid fa-trash'></i>Remove project";
+                btn.addEventListener("click",removeInput);
+
+                const learnbody=document.createElement("div");
+                learnbody.className="learnings";
+
+                const learn=document.createElement("div");
+                learn.className="learnings";
+                learn.textContent="Learnings during project period";
+
+                const learnbtn=document.createElement("a");
+                learnbtn.className="learningbutton";
+                learnbtn.href="#";
+                learnbtn.innerHTML="<i class='fa-solid fa-plus'></i>";
+                learnbtn.addEventListener("click",function()
+                    {
+                        event.preventDefault();
+                        const learning=document.createElement("div");
+                        learning.className="learning";
+                        const lname=document.createElement("textarea");
+                        lname.type="text";
+                        lname.setAttribute('required','');
+                        lname.id="lerningarea"
+                        lname.placeholder="learning";                
+                        learnbody.appendChild(learning);
+                        learning.appendChild(lname);
+                        const lbtn=document.createElement("i");
+                        lbtn.className="deletelearning";
+                        lbtn.innerHTML="#";
+                        lbtn.innerHTML="<i class='fa-solid fa-trash'></i>";
+                        function removelearningInput()
+                        {
+                            this.parentElement.remove();
+                        }
+                        lbtn.addEventListener("click",removelearningInput);
+                        learning.appendChild(lbtn);            
+                    });
+
+                const challangebody=document.createElement("div");
+                challangebody.className="challangebody";
+
+                const challanges=document.createElement("div");
+                challanges.className="challanges";
+                challanges.textContent="Challanges  Faced";
+
+                const chabtn=document.createElement("a");
+                chabtn.className="challangebutton";
+                chabtn.href="#";
+                chabtn.innerHTML="<i class='fa-solid fa-plus'></i>";
+                chabtn.addEventListener("click",function()
+                    {
+                        event.preventDefault();
+                        const challange=document.createElement("div");
+                        challange.className="challange";
+                        challange.className="challange";
+                        const cname=document.createElement("textarea");
+                        cname.type="text";
+                        cname.id="cid";
+                        cname.setAttribute('required','');
+                        cname.placeholder="challange";
+                        const cIname=document.createElement("textarea");
+                        cIname.type="text";
+                        cIname.setAttribute('required','');
+                        cIname.className="improve";
+                        cIname.placeholder="How you overcome it";              
+                        challangebody.appendChild(challanges);
+                        challanges.appendChild(challange);
+                        challange.appendChild(cname);
+                        challange.appendChild(cIname);
+                        const crbtn=document.createElement("i");
+                        crbtn.className="deletechallange";
+                        crbtn.innerHTML="#";
+                        crbtn.innerHTML="<i class='fa-solid fa-trash'></i>";
+                        function removechallangeInput()
+                        {
+                            this.parentElement.remove();
+                        }
+                        crbtn.addEventListener("click",removechallangeInput);
+                        challange.appendChild(crbtn);            
+                    });
+
+                const divblock=document.createElement("div");
+                divblock.className="divblock";
+                pinput.appendChild(divblock);
+                divblock.appendChild(name);
+                divblock.appendChild(role);
+                divblock.appendChild(learnbody);
+                learnbody.appendChild(learn);
+                learn.appendChild(learnbtn);
+                divblock.appendChild(challangebody);
+                challangebody.appendChild(challanges);
+                challanges.appendChild(chabtn);
+                divblock.appendChild(AoI);
+                divblock.appendChild(rewards);
+                divblock.appendChild(btn);
+            }
+            paddbtn.addEventListener("click",addInput);
+
+
+            const raddbtn=document.querySelector(".addrating");
+raddbtn.id="addrating";
+const rinput=document.querySelector(".rating");
+function removereview()
+{
+    this.parentElement.remove();
+}
+function activestar()
+    {
+        const stars=this.parentElement.children;
+        const starIndex=Array.from(stars).indexOf(this);
+        for(let i=0;i<5;i++)
+        {
+            stars[i].classList.remove("active");
+        }
+        for(let i=0;i<=starIndex;i++)
+        {
+            stars[i].classList.toggle("active");
+        }
+    }
+
+    //creating n number of stars
+
+function createstars(starlist,n)
+{
+    const ratingicon='fa-solid fa-star';
+    for(let i=0;i<n;i++)
+    {
+        starlist[i]=document.createElement("i");
+        starlist[i].className=ratingicon;
+        starlist[i].href="#";
+        starlist[i].addEventListener("click",activestar);
+    }
+    
+}
+
+    //-------
+    //star appending function
+
+function appending(parent,child)
+{
+    let l=child.length;
+    for(let i=0;i<l;i++)
+    {
+        parent.appendChild(child[i]);
+    }
+    
+}
+    //--------
+    //created star div adding
+function addstar(divblock,divrow,divtext,startype)
+{
+    divblock.appendChild(divrow);
+    divrow.appendChild(divtext);
+    appending(divrow,startype);
+}
+
+function addrating()
+{
+    event.preventDefault();
+    
+    const ratedby=document.createElement("input");
+    ratedby.type="text";
+    ratedby.id="ratedby";
+    ratedby.setAttribute('required','');
+    ratedby.placeholder="Rated By";
+
+//22222
+//22222222222222222222
+    const tdiv=document.createElement('div');
+    tdiv.className="tdiv";
+    tdiv.textContent="Technical Skills";
+
+    const techstar=document.createElement("div");
+    techstar.className="techstar";
+    techstar.id="techstar";
+
+    const tstar=[];
+    const n=5;
+    createstars(tstar,n);
+    tstar[0].id="techf";
+    tstar[0].classList.add('active');
+
+//22222
+//22222222222222222222
+
+    const Teamworkstar=document.createElement("div");
+    Teamworkstar.className="Teamworkstar";
+    Teamworkstar.id="PrblmSolvingstar";
+
+    const tediv=document.createElement('div');
+    tediv.className="tediv";
+    tediv.textContent="Teamworkstar Skills";
+
+    const testar=[];
+    createstars(testar,n);
+    testar[0].id="techf";
+    testar[0].classList.add('active');
+
+    
+//22222
+//22222222222222222222
+
+const Initiativestar=document.createElement("div");
+Initiativestar.className="Initiativestar";
+Initiativestar.id="Initiativestar";
+    
+const idiv=document.createElement('div');
+    idiv.className="idiv";
+    idiv.textContent="Initiative Skills";
+
+    const istar=[];
+    createstars(istar,n);
+    istar[0].id="if";
+    istar[0].classList.add('active');
+
+//22222
+//22222222222222222222
+
+const PrblmSolvingstar=document.createElement("div");
+PrblmSolvingstar.className="PrblmSolvingstar";
+PrblmSolvingstar.id='PrblmSolvingstar';
+    
+const pdiv=document.createElement('div');
+    pdiv.className="pdiv";
+    pdiv.textContent="Problem Solving Skills";
+
+    const pstar=[];
+    createstars(pstar,n);
+    pstar[0].id="pf";
+    pstar[0].classList.add('active');
+
+//22222
+
+    const commentby=document.createElement("textarea");
+    commentby.type="text";
+    commentby.id="commentby";
+    commentby.setAttribute('required','');
+    commentby.placeholder="Comments and suggessions:";
+
+    const rbtn=document.createElement("button");
+    rbtn.className="rdelete";
+    rbtn.innerHTML="<i class='fa-solid fa-trash'></i>Remove review";
+    rbtn.addEventListener("click",removereview);
+
+    const rdivblock=document.createElement("div");
+    rdivblock.className="pdivblock";
+    rinput.appendChild(rdivblock);
+    rdivblock.appendChild(ratedby);
+
+    addstar(rdivblock,techstar,tdiv,tstar);
+
+    addstar(rdivblock,Teamworkstar,tediv,testar);
+
+    addstar(rdivblock,PrblmSolvingstar,pdiv,pstar);
+ 
+    addstar(rdivblock,Initiativestar,idiv,istar);
+
+    rdivblock.appendChild(commentby);
+    rdivblock.appendChild(rbtn);
+}
+raddbtn.addEventListener("click",addrating);
+        </script>
+    </body>
+</html>
